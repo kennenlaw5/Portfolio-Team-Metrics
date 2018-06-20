@@ -1,7 +1,7 @@
 function dataPull() { // this calls the other 2 functions
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   //var ui = SpreadsheetApp.getUi(); // Not sure if this will be used. TBD
-  var inputFirst  = [[]]; inputFirst = grab();
+  grab();
   Logger.log(inputFirst);
   //var inputSecond = []; inputSecond = grasp();
 }
