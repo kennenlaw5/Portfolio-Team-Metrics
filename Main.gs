@@ -8,12 +8,13 @@ function dataPull() { // this calls the other 2 functions
 function grab() { // first sheet -- return an array with data grabbed
   Logger.log("grab data from first sheet");
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ui = SpreadsheetApp.getUi();
   var sheet = ss.getActiveSheet();
   var range = sheet.getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn());
   var arr = range.getValues();
   var sorted = [];
   var CA = arr[1][34];
-  CA = CA.split(",");
+  CA = CA.split(", ");
   CA = CA[1] + " " + CA[0];
   Logger.log(CA);
   var count=0;
@@ -29,12 +30,31 @@ function grab() { // first sheet -- return an array with data grabbed
       sorted[count][7] = arr[i][13];        // maturity date
       sorted[count][8] = arr[i][27];        // vin
       sorted[count][9] = arr[i][28];        // year
-      sorted[count][10] = arr[i][29];        // make/model
+      sorted[count][10] = arr[i][29];       // make/model
       count++;
       /*sorted[i][10] = arr[i][34];       // advisor This isn't needed. You only need to pull arr[i][34] once to get the name, but it won't be included in the array*/
     }
   }
   Logger.log(sorted);
+  var sheets = ss.getSheets();
+  var names = [];
+  var found = false;
+  for (i = 0; i < sheets.length && !found; i++) {
+    names[i]=sheets[i].getSheetName();
+    if (names[i].toUpperCase() == CA) { sheet = ss.getSheetByName(names[i]); found = true; Logger.log(names[i]); }
+  }
+  if (found) {
+    //ss.getActiveSheet().getRange(25, 2, sorted.length, sorted[i].length).setValues(sorted); // Disable comment to paste values onto target
+  } else {
+    var notify = ui.alert("Error", "Function could not find CA: " + CA + ". Would you like to report this issue?", ui.ButtonSet.YES_NO);
+    if (notify == ui.Button.YES) { 
+      MailApp.sendEmail('kennen.lawrence@a2zsync.com','HELP Portfolio Metrics',"Function could not find CA: " + CA + "\nAvailable sheet Names:\n" + names);
+      ss.toast("Email was sent successfully! Your issue will be adressed shortly.", "Success!");
+    } else if (notify == ui.Button.NO) {
+      Logger.log('User cancelled');
+      ss.toast("Action was cancelled. Email was not sent.", "Action Cancelled");
+    }
+  }
 }
 
 //function grasp() { // second sheet -- return an array with data grabbed
