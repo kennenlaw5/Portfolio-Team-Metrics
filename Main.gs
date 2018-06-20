@@ -18,19 +18,19 @@ function grab() { // first sheet -- return an array with data grabbed
   Logger.log(CA);
   var count=0;
   for (var i = 0; i < arr.length; i++) {
-    if(arr[count][1]!="First Name"){
-    sorted[count]= [count+1];
-    sorted[count][1] = arr[i][0];         // last
-    sorted[count][2] = arr[i][1];         // first
-    sorted[count][3] = arr[i][7];         // home #
-    sorted[count][4] = arr[i][8];         // work #
-    sorted[count][5] = arr[i][9];         // email
-    sorted[count][6] = arr[i][10];        // account #
-    sorted[count][7] = arr[i][13];        // maturity date
-    sorted[count][8] = arr[i][27];        // vin
-    sorted[count][9] = arr[i][28];        // year
-    sorted[count][10] = arr[i][29];        // make/model
-    count++;
+    if(arr[i][1]!="First Name"){
+      sorted[count] = [count+1];
+      sorted[count][1] = arr[i][0];         // last
+      sorted[count][2] = arr[i][1];         // first
+      sorted[count][3] = arr[i][7];         // home #
+      sorted[count][4] = arr[i][8];         // work #
+      sorted[count][5] = arr[i][9];         // email
+      sorted[count][6] = arr[i][10];        // account #
+      sorted[count][7] = arr[i][13];        // maturity date
+      sorted[count][8] = arr[i][27];        // vin
+      sorted[count][9] = arr[i][28];        // year
+      sorted[count][10] = arr[i][29];        // make/model
+      count++;
       /*sorted[i][10] = arr[i][34];       // advisor This isn't needed. You only need to pull arr[i][34] once to get the name, but it won't be included in the array*/
     }
   }
