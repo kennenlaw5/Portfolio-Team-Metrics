@@ -2,7 +2,6 @@ function dataPull() { // this calls the other 2 functions
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   //var ui = SpreadsheetApp.getUi(); // Not sure if this will be used. TBD
   grab();
-  Logger.log(inputFirst);
   //var inputSecond = []; inputSecond = grasp();
 }
 
@@ -19,19 +18,19 @@ function grab() { // first sheet -- return an array with data grabbed
   Logger.log(CA);
   var count=0;
   for (var i = 0; i < arr.length; i++) {
-    if(arr[i][1]!="First Name"){
-      count++;
-      sorted[i]= [count];
-      sorted[i][1] = arr[i][0];         // last
-      sorted[i][2] = arr[i][1];         // first
-      sorted[i][3] = arr[i][7];         // home #
-      sorted[i][4] = arr[i][8];         // work #
-      sorted[i][5] = arr[i][9];         // email
-      sorted[i][6] = arr[i][10];        // account #
-      sorted[i][7] = arr[i][13];        // maturity date
-      sorted[i][8] = arr[i][27];        // vin
-      sorted[i][9] = arr[i][28];        // year
-      sorted[i][10] = arr[i][29];        // make/model
+    if(arr[count][1]!="First Name"){
+    sorted[count]= [count+1];
+    sorted[count][1] = arr[i][0];         // last
+    sorted[count][2] = arr[i][1];         // first
+    sorted[count][3] = arr[i][7];         // home #
+    sorted[count][4] = arr[i][8];         // work #
+    sorted[count][5] = arr[i][9];         // email
+    sorted[count][6] = arr[i][10];        // account #
+    sorted[count][7] = arr[i][13];        // maturity date
+    sorted[count][8] = arr[i][27];        // vin
+    sorted[count][9] = arr[i][28];        // year
+    sorted[count][10] = arr[i][29];        // make/model
+    count++;
       /*sorted[i][10] = arr[i][34];       // advisor This isn't needed. You only need to pull arr[i][34] once to get the name, but it won't be included in the array*/
     }
   }
