@@ -9,10 +9,14 @@ function dataPull() { // this calls the other 2 functions
 function grab() { // first sheet -- return an array with data grabbed
   Logger.log("grab data from first sheet");
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  ss.setActiveSheet("Lease Portfolio");
-  var range = ss.getActiveSheet().getRange(0, 0, 56, 35);
+  var sheet = ss.getActiveSheet();
+  var range = sheet.getRange(0, 0, sheet.getLastRow(), sheet.getLastColumn());
   var arr = range.getValues();
   var sorted = [[]];
+  var CA = arr[1][34];
+  CA = CA.split(",");
+  CA = CA[1] + CA[0];
+  Logger.log(CA);
   for (var i = 0; i < arr.length; i++) {
     sorted[i][0] = i+1;
     sorted[i][1] = arr[i][0];         // last
