@@ -11,9 +11,8 @@ function grab() { // first sheet -- return an array with data grabbed
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   ss.setActiveSheet("Lease Portfolio");
   var range = ss.getActiveSheet().getRange(0, 0, 56, 35);
-  var arr = [[]];
+  var arr = range.getValues();
   var sorted = [[]];
-  arr = range.getValues();
   for (var i = 0; i < arr.length; i++) {
     sorted[i][0] = arr[i][0];         // last
     sorted[i][1] = arr[i][1];         // first
@@ -28,7 +27,6 @@ function grab() { // first sheet -- return an array with data grabbed
     sorted[i][10] = arr[i][34];       // advisor
   }
   Logger.log(sorted);
-  return sorted;
 }
 
 //function grasp() { // second sheet -- return an array with data grabbed
