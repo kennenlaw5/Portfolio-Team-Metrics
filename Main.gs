@@ -12,7 +12,7 @@ function grab() { // first sheet -- return an array with data grabbed
   var sheet = ss.getActiveSheet();
   var range = sheet.getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn());
   var arr = range.getValues();
-  var sorted = [[]];
+  var sorted = [];
   var CA = arr[1][34];
   CA = CA.split(",");
   CA = CA[1] + " " + CA[0];
