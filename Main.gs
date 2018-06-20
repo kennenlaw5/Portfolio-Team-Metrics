@@ -55,10 +55,3 @@ function grab() { // first sheet
     }
   }
 }
-
-//function grasp() { // second sheet -- return an array with data grabbed
-//  Logger.log("grab data from second sheet");
-//  var arr = [];
-//  
-//  return arr;
-//}
