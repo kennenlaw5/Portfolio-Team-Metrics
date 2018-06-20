@@ -10,7 +10,7 @@ function grab() { // first sheet -- return an array with data grabbed
   Logger.log("grab data from first sheet");
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getActiveSheet();
-  var range = sheet.getRange(0, 0, sheet.getLastRow(), sheet.getLastColumn());
+  var range = sheet.getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn());
   var arr = range.getValues();
   var sorted = [[]];
   var CA = arr[1][34];
