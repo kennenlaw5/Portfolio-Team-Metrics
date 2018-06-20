@@ -9,7 +9,8 @@ function grab() { // first sheet -- return an array with data grabbed
   Logger.log("grab data from first sheet");
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var ui = SpreadsheetApp.getUi();
-  var sheet = ss.getActiveSheet();
+  var sheets = ss.getSheets();
+  var sheet = ss.getSheetByName(sheets[sheets.length-1].getSheetName());
   var range = sheet.getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn());
   var arr = range.getValues();
   var sorted = [];
@@ -32,11 +33,9 @@ function grab() { // first sheet -- return an array with data grabbed
       sorted[count][9] = arr[i][28];        // year
       sorted[count][10] = arr[i][29];       // make/model
       count++;
-      /*sorted[i][10] = arr[i][34];       // advisor This isn't needed. You only need to pull arr[i][34] once to get the name, but it won't be included in the array*/
     }
   }
   Logger.log(sorted);
-  var sheets = ss.getSheets();
   var names = [];
   var found = false;
   for (i = 0; i < sheets.length && !found; i++) {
@@ -44,7 +43,7 @@ function grab() { // first sheet -- return an array with data grabbed
     if (names[i].toUpperCase() == CA) { sheet = ss.getSheetByName(names[i]); found = true; Logger.log(names[i]); }
   }
   if (found) {
-    //ss.getActiveSheet().getRange(25, 2, sorted.length, sorted[i].length).setValues(sorted); // Disable comment to paste values onto target
+    sheet.getRange(25, 2, sorted.length, sorted[i].length).setValues(sorted); // Disable comment to paste values onto target
   } else {
     var notify = ui.alert("Error", "Function could not find CA: " + CA + ". Would you like to report this issue?", ui.ButtonSet.YES_NO);
     if (notify == ui.Button.YES) { 
