@@ -17,9 +17,11 @@ function grab() { // first sheet -- return an array with data grabbed
   CA = CA.split(",");
   CA = CA[1] + " " + CA[0];
   Logger.log(CA);
+  var count=0;
   for (var i = 0; i < arr.length; i++) {
-    if(arr[i][0]=="First Name"){
-      sorted[i]= [i+1];
+    if(arr[i][1]!="First Name"){
+      count++;
+      sorted[i]= [count];
       sorted[i][1] = arr[i][0];         // last
       sorted[i][2] = arr[i][1];         // first
       sorted[i][3] = arr[i][7];         // home #
