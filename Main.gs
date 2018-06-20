@@ -23,15 +23,15 @@ function grab() { // first sheet -- return an array with data grabbed
     if(arr[i][1]!="First Name"){
       sorted[count] = [count+1];
       sorted[count][1] = arr[i][0];         // last
-      sorted[count][2] = arr[i][1];         // first
-      sorted[count][3] = arr[i][7];         // home #
-      sorted[count][4] = arr[i][8];         // work #
-      sorted[count][5] = arr[i][9];         // email
-      sorted[count][6] = arr[i][10];        // account #
-      sorted[count][7] = arr[i][13];        // maturity date
-      sorted[count][8] = arr[i][27];        // vin
-      sorted[count][9] = arr[i][28];        // year
-      sorted[count][10] = arr[i][29];       // make/model
+      sorted[count][4] = arr[i][1];         // first
+      sorted[count][7] = arr[i][7];         // home #
+      sorted[count][10] = arr[i][8];         // work #
+      sorted[count][13] = arr[i][9];         // email
+      sorted[count][18] = arr[i][10];        // account #
+      sorted[count][21] = arr[i][13];        // maturity date
+      sorted[count][25] = arr[i][27];        // vin
+      sorted[count][31] = arr[i][28];        // year
+      sorted[count][32] = arr[i][29];       // make/model
       count++;
     }
   }
