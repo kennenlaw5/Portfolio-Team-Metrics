@@ -32,6 +32,7 @@ function grab() { // first sheet -- return an array with data grabbed
       sorted[count][25] = arr[i][27];        // vin
       sorted[count][31] = arr[i][28];        // year
       sorted[count][32] = arr[i][29];       // make/model
+      for (var j = 0; j < sorted[count].length; j++) { if(sorted[count][j] == undefined) { sorted[count][j] = ""; } }
       count++;
     }
   }
