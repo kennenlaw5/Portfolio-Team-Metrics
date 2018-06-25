@@ -17,7 +17,7 @@ function grab() { // first sheet
   CA = CA.split(", ");
   CA = CA[1] + " " + CA[0];
   Logger.log(CA);
-  var count=0;
+  var count = 0;
   for (var i = 0; i < arr.length; i++) {
     if(arr[i][1]!="First Name"){
       sorted[count] = [count+1];
@@ -40,7 +40,7 @@ function grab() { // first sheet
   var found = false;
   for (i = 0; i < sheets.length && !found; i++) {
     names[i]=sheets[i].getSheetName();
-    if (names[i].toUpperCase() == CA) { sheet = ss.getSheetByName(names[i]); found = true; Logger.log(names[i]); }
+    if (names[i].toUpperCase() == CA) { ss.deleteSheet(sheet); sheet = ss.getSheetByName(names[i]); found = true; Logger.log(names[i]); }
   }
   if (found) {
     sheet.getRange(25, 2, sorted.length, sorted[i].length).setValues(sorted); // Disable comment to paste values onto target
